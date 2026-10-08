@@ -1,8 +1,11 @@
-from database import engine, Base  
-import models  
+from . import models  # noqa: F401 -- register ORM tables
+from .database import Base, engine
 
-print("Tentando criar tabelas no banco de dados...")
 
-Base.metadata.create_all(bind=engine, checkfirst=True)
+def main() -> None:
+    Base.metadata.create_all(bind=engine)
+    print("Tabelas criadas/verificadas. Use migrações para bancos já existentes.")
 
-print("Tabelas verificadas/criadas com sucesso (se não existiam)!")
+
+if __name__ == "__main__":
+    main()

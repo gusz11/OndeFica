@@ -1,0 +1,10 @@
+{
+  "name": "ondefica-api-types",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Isolated OpenAPI generator: its TypeScript 5 peer must not downgrade Expo SDK 57 TypeScript 6.",
+  "dependencies": {
+    "openapi-typescript": "7.13.0",
+    "typescript": "~5.9.3"
+  }
+}

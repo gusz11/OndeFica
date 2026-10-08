@@ -1,0 +1,33 @@
+.review/
+**/node_modules/
+**/.npm-cache/
+**/.expo/
+**/dist/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+.venv/
+**/.env
+**/.env.*
+!**/.env.example
+**/*.db
+# Local databases, including SQLite sidecars and backups.
+**/*.db-*
+**/*.db.*
+**/*.sqlite
+**/*.sqlite-*
+**/*.sqlite.*
+**/*.sqlite3
+**/*.sqlite3-*
+**/*.sqlite3.*
+**/*.py[cod]
+**/*.log
+**/.coverage
+**/.coverage.*
+**/htmlcov/
+**/coverage/
+# Machine-specific firewall helper (IPs, rule IDs and local Python path).
+/scripts/repair_dev_firewall.ps1
+**/*.tsbuildinfo
+**/.idea/

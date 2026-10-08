@@ -1,31 +1,40 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-import os
-from dotenv import load_dotenv 
+from collections.abc import Generator
+from typing import Protocol, cast
 
-load_dotenv() # 
+from sqlalchemy import create_engine, event
+from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+from .config import get_settings
 
-if not DATABASE_URL:
-    print("ALERTA: DATABASE_URL não definida no .env. Usando SQLite local 'ondefica_dev.db' para desenvolvimento.")
-    DATABASE_URL = "sqlite:///./ondefica_dev.db" 
 
-if DATABASE_URL.startswith("sqlite"):
-    engine = create_engine(
-        DATABASE_URL, connect_args={"check_same_thread": False} 
-    )
-else:
-    engine = create_engine(DATABASE_URL)
+class Base(DeclarativeBase):
+    pass
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-Base = declarative_base()
+class Connection(Protocol):
+    def execute(self, statement: str) -> object: ...
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+
+database_url = get_settings().database_url
+engine = create_engine(
+    database_url,
+    connect_args={"check_same_thread": False} if database_url.startswith("sqlite") else {},
+    pool_pre_ping=True,
+)
+if database_url.startswith("sqlite"):
+
+    @event.listens_for(engine, "connect")
+    def enable_foreign_keys(connection: object, _record: object) -> None:
+        cast(Connection, connection).execute("PRAGMA foreign_keys=ON")
+
+
+SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
+
+
+def get_db() -> Generator[Session, None, None]:
+    with SessionLocal() as session:
+        try:
+            yield session
+        except Exception:
+            session.rollback()
+            raise
