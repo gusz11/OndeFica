@@ -34,6 +34,7 @@ export function getGlobalStyles(colors: ThemeColors) {
       alignItems: "center",
       justifyContent: "center",
     },
+    brandAccent: { backgroundColor: colors.superficieOliva },
     headerTitle: {
       fontSize: 20,
       fontWeight: "700",
@@ -41,7 +42,7 @@ export function getGlobalStyles(colors: ThemeColors) {
       color: colors.textoPrimario,
     },
     eyebrow: {
-      color: colors.textoMuted,
+      color: colors.destaqueOliva,
       fontSize: 11,
       fontWeight: "600",
       letterSpacing: 1.5,
@@ -173,9 +174,9 @@ export function getGlobalStyles(colors: ThemeColors) {
       borderColor: colors.borda,
     },
     iconSelected: {
-      backgroundColor: colors.botaoPrimarioFundo,
+      backgroundColor: colors.superficieOliva,
       borderWidth: 1,
-      borderColor: colors.botaoPrimarioFundo,
+      borderColor: colors.bordaOliva,
     },
     center: {
       paddingVertical: spacing.xl,
@@ -290,8 +291,8 @@ export function getGlobalStyles(colors: ThemeColors) {
       gap: 6,
     },
     chipSelected: {
-      backgroundColor: colors.botaoPrimarioFundo,
-      borderColor: colors.botaoPrimarioFundo,
+      backgroundColor: colors.superficieOliva,
+      borderColor: colors.bordaOliva,
     },
     sectionHeading: {
       flexDirection: "row",

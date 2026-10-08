@@ -50,7 +50,7 @@ export default function IconButton({
           destructive
             ? theme.textoBotaoAcaoVermelho
             : selected
-              ? theme.botaoPrimarioTexto
+              ? theme.destaqueOuro
               : theme.textoPrimario
         }
       />

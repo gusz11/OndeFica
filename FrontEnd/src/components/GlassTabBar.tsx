@@ -29,7 +29,7 @@ export default memo(function GlassTabBar({
   position,
 }: MaterialTopTabBarProps) {
   const insets = useSafeAreaInsets();
-  const { theme, themeMode } = useTheme();
+  const { theme } = useTheme();
   const { fontScale } = useWindowDimensions();
   const [width, setWidth] = useState(0);
   const [keyboardVisible, setKeyboardVisible] = useState(Keyboard.isVisible());
@@ -84,10 +84,8 @@ export default memo(function GlassTabBar({
               {
                 width: Math.max(0, itemWidth - 4),
                 transform: [{ translateX }],
-                backgroundColor:
-                  themeMode === "dark"
-                    ? "rgba(255, 255, 255, 0.08)"
-                    : "rgba(0, 0, 0, 0.06)",
+                backgroundColor: theme.abaSelecionada,
+                borderColor: theme.bordaOliva,
               },
             ]}
           />
@@ -96,7 +94,7 @@ export default memo(function GlassTabBar({
           const focused = state.index === index;
           const options = descriptors[route.key]?.options;
           const label = options?.title ?? route.name;
-          const color = focused ? theme.textoPrimario : theme.textoSecundario;
+          const color = focused ? theme.destaqueOuro : theme.textoSecundario;
           return (
             <Pressable
               key={route.key}

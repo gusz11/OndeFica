@@ -122,6 +122,14 @@ Referência da biblioteca acrescentada: [Expo Crypto no SDK 57](https://docs.exp
 
 A exportação final das quatro mudanças passou em Android, iOS e web (39 assets). Expo Doctor passou em 21/21 verificações. TypeScript, ESLint, Prettier, Ruff, mypy e a checagem do contrato também passaram.
 
+## Identidade visual e README — revisão de 08/10/2026
+
+- README reduzido ao essencial: requisitos, instalação, variáveis de ambiente, execução e verificações. Os detalhes da refatoração permanecem neste relatório.
+- Base neutra preservada nos fundos, cartões, textos e botões principais. Acentos de oliva nos filtros selecionados, pequenos títulos e indicador de navegação; ouro na marca, aba ativa e favoritos preenchidos.
+- Cores centralizadas em tokens de tema, com versões próprias para claro/escuro. O fundo nativo Liquid Glass continua no modo clear, sem tint adicional; somente a seleção recebeu oliva translúcido. Cores de erro e sucesso foram preservadas.
+- Validação: TypeScript, ESLint, Prettier e 32 testes frontend aprovados. O teste de contraste cobre os acentos sobre as superfícies usadas, nos dois temas. Export web de desenvolvimento aprovado.
+- Prévia web com API e banco simulados conferida em 320/390 pontos, temas claro/escuro e favorito já salvo. Sem erros de console no fluxo. Capturas locais em `.review/olive-dark.jpg`, `.review/olive-dark-saved.jpg` e `.review/olive-light.jpg`; não representam a renderização nativa de um iPhone.
+
 ## Liquid Glass clear com Expo Go — revisão de 08/10/2026
 
 - Mantido Expo Go conforme solicitação do usuário, que informou iOS 27. Usado `expo-glass-effect ~57.0.4`, a implementação nativa incluída no SDK 57; `@callstack/liquid-glass` exige build próprio e não foi instalado.

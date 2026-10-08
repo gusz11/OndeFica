@@ -31,14 +31,14 @@ export default function Chip({
         <Icon
           name={icon}
           size={16}
-          color={selected ? theme.botaoPrimarioTexto : theme.textoSecundario}
+          color={selected ? theme.destaqueOliva : theme.textoSecundario}
         />
       )}
       <Text
         style={[
           styles.label,
           {
-            color: selected ? theme.botaoPrimarioTexto : theme.textoSecundario,
+            color: selected ? theme.destaqueOliva : theme.textoSecundario,
           },
         ]}
       >

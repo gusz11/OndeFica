@@ -25,6 +25,10 @@ it("keeps normal text legible on supported light and dark surfaces", () => {
     ["textoBotaoAcaoVermelho", "perigoFundo"],
     ["iconeInativo", "fundoFooter"],
     ["textoPrimario", "superficieSecundaria"],
+    ["destaqueOliva", "backgroundPrincipal"],
+    ["destaqueOliva", "superficieOliva"],
+    ["destaqueOuro", "superficieOliva"],
+    ["destaqueOuro", "superficiePrimaria"],
   ] as const;
   for (const theme of [darkThemeColors, lightThemeColors]) {
     for (const [text, background] of pairs) {
