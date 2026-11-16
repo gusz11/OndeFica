@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useState, type ComponentRef } from "react";
 import { Text, TextInput, View, type TextInputProps } from "react-native";
 import { useTheme } from "../context/ThemeContext";
 import { useStyles } from "../styles/styles";
@@ -9,10 +9,11 @@ type Props = Omit<TextInputProps, "style"> & {
   helper?: string;
   error?: string;
 };
-export default forwardRef<TextInput, Props>(function TextField(
-  { label, helper, error, secureTextEntry, onFocus, onBlur, ...input },
-  ref,
-) {
+export default forwardRef<ComponentRef<typeof TextInput>, Props>(
+  function TextField(
+    { label, helper, error, secureTextEntry, onFocus, onBlur, ...input },
+    ref,
+  ) {
   const { theme } = useTheme();
   const styles = useStyles(theme);
   const [focused, setFocused] = useState(false);
@@ -62,4 +63,5 @@ export default forwardRef<TextInput, Props>(function TextField(
       )}
     </View>
   );
-});
+  },
+);

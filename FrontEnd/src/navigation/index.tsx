@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type RefObject } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   NavigationContainer,
   DefaultTheme,
@@ -10,8 +10,12 @@ import {
   type MaterialTopTabBarProps,
 } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useWindowDimensions, type View } from "react-native";
-import { TabBlurContext, TabScene } from "../context/TabBlurContext";
+import { useWindowDimensions } from "react-native";
+import {
+  TabBlurContext,
+  TabScene,
+  type TabBlurTarget,
+} from "../context/TabBlurContext";
 import GlassTabBar from "../components/GlassTabBar";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
@@ -35,7 +39,7 @@ const renderTabBar = (props: MaterialTopTabBarProps) => (
 
 function MainTabs() {
   const { width } = useWindowDimensions();
-  const [target, setTarget] = useState<RefObject<View | null>>();
+  const [target, setTarget] = useState<TabBlurTarget>();
   const blurContext = useMemo(() => ({ target, setTarget }), [target]);
   return (
     <TabBlurContext.Provider value={blurContext}>

@@ -2,13 +2,13 @@
 
 Aplicativo para explorar Brasília, salvar favoritos e organizar viagens com visitas e hospedagens. Inclui horários, roteiros em PDF e consulta offline da programação previamente carregada no celular.
 
-**Tecnologias:** Expo Go (SDK 57), React Native, TypeScript e FastAPI. Interface escura por padrão, com detalhes em verde-oliva e amarelo-ouro.
+**Tecnologias:** Expo Go (SDK 58), React Native, TypeScript e FastAPI. Interface escura por padrão, com detalhes em verde-oliva e amarelo-ouro.
 
 ## Requisitos
 
 - Python 3.11+
 - Node.js 22.13+
-- Expo Go compatível com SDK 57
+- Expo Go compatível com SDK 58
 
 ## Instalação
 
@@ -45,16 +45,16 @@ No celular, use o IP do computador e a mesma rede Wi-Fi. No navegador do computa
 
 ## Executar
 
-Backend, na raiz do projeto:
+Backend: na raiz do projeto:
 
 ```powershell
 .\.venv\Scripts\python.exe -m uvicorn BackEnd.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-Frontend, em outro terminal na raiz:
+Frontend: em um terminal na pasta do FrontEnd:
 
 ```powershell
-npm --prefix FrontEnd start
+npm start
 ```
 
 Abra o QR code no Expo Go. Para a versão web: `npm --prefix FrontEnd run web`.

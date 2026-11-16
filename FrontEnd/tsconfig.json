@@ -5,7 +5,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "allowJs": false,
-    "types": ["react"]
+    "types": ["node", "react"]
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.mts"],
   "exclude": ["node_modules", ".npm-cache", "dist"]

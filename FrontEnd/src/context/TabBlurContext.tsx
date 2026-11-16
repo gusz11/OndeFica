@@ -3,6 +3,7 @@ import {
   useContext,
   useEffect,
   useRef,
+  type ComponentRef,
   type Dispatch,
   type PropsWithChildren,
   type RefObject,
@@ -12,11 +13,13 @@ import { Platform, View } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { BlurTargetView } from "expo-blur";
 
-type BlurTarget = RefObject<View | null> | undefined;
+export type TabBlurTarget =
+  | RefObject<ComponentRef<typeof View> | null>
+  | undefined;
 export const TabBlurContext = createContext<
   | {
-      target: BlurTarget;
-      setTarget: Dispatch<SetStateAction<BlurTarget>>;
+      target: TabBlurTarget;
+      setTarget: Dispatch<SetStateAction<TabBlurTarget>>;
     }
   | undefined
 >(undefined);
@@ -24,7 +27,7 @@ export const TabBlurContext = createContext<
 export function TabScene({ children }: PropsWithChildren) {
   const context = useContext(TabBlurContext);
   const focused = useIsFocused();
-  const ref = useRef<View | null>(null);
+  const ref = useRef<ComponentRef<typeof View> | null>(null);
   const setTarget = context?.setTarget;
   useEffect(() => {
     if (Platform.OS === "android" && focused) setTarget?.(ref);
@@ -39,6 +42,6 @@ export function TabScene({ children }: PropsWithChildren) {
   );
 }
 
-export function useTabBlurTarget(): BlurTarget {
+export function useTabBlurTarget(): TabBlurTarget {
   return useContext(TabBlurContext)?.target;
 }

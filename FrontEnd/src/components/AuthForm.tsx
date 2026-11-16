@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ComponentRef } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -23,9 +23,9 @@ export default function AuthForm({ mode, onSwitch }: Props) {
   const { notify } = useDialog();
   const { theme } = useTheme();
   const styles = useStyles(theme);
-  const emailRef = useRef<TextInput>(null);
-  const passwordRef = useRef<TextInput>(null);
-  const confirmationRef = useRef<TextInput>(null);
+  const emailRef = useRef<ComponentRef<typeof TextInput>>(null);
+  const passwordRef = useRef<ComponentRef<typeof TextInput>>(null);
+  const confirmationRef = useRef<ComponentRef<typeof TextInput>>(null);
   const form = useAuthForm(mode, () =>
     notify(
       "Conta criada",
